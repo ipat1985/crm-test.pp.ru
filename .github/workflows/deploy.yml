@@ -3,7 +3,7 @@ name: Auto Deploy Quasar Dev
 on:
   push:
     branches:
-      - main  # триггер на ветку main
+      - main
 
 jobs:
   deploy:
@@ -28,10 +28,9 @@ jobs:
       run: quasar build -m spa
 
     - name: Create zip of build
-      run: zip -r dist/spa.zip dist/spa
+      run: zip -r crm-test.pp.ru/dist/spa.zip crm-test.pp.ru/dist/spa
 
     - name: Send build to webhook
       run: |
         curl -X POST https://crm-test.pp.ru/hooks/ \
-          -F "file=@dist/spa.zip"
-
+          -F "file=@crm-test.pp.ru/dist/spa.zip"
