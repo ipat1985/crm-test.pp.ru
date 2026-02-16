@@ -3,10 +3,6 @@
     <div class="sidebar-brand__logo">
       <span class="sidebar-brand__logo-text">PP</span>
     </div>
-    <div v-show="!collapsed" class="sidebar-brand__content">
-      <div class="sidebar-brand__title">РАБОЧИЕ РУКИ</div>
-      <div class="sidebar-brand__slogan">B2B-платформа для найма самозанятых исполнителей</div>
-    </div>
   </div>
 </template>
 
@@ -20,17 +16,13 @@ defineProps<{
 .sidebar-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   padding: 16px;
   height: 72px;
   min-height: 72px;
   box-sizing: border-box;
-  background: var(--sidebar-brand-bg);
+  background: var(--sidebar-bg);
   flex-shrink: 0;
-
-  &--collapsed {
-    justify-content: center;
-  }
 
   &__logo {
     width: 40px;
@@ -49,24 +41,6 @@ defineProps<{
     color: var(--sidebar-brand-logo-text);
     font-weight: 700;
     font-size: 14px;
-  }
-
-  &__content {
-    min-width: 0;
-  }
-
-  &__title {
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--sidebar-brand-title);
-    line-height: 1.2;
-  }
-
-  &__slogan {
-    font-size: 12px;
-    color: var(--sidebar-brand-slogan);
-    margin-top: 2px;
-    line-height: 1.3;
   }
 }
 </style>
