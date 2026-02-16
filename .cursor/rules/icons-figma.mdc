@@ -1,0 +1,27 @@
+---
+description: Иконки проекта — источник Figma, свойства, Material Icons
+globs: **/sidebar/**/*.vue,**/components/**/*.vue
+alwaysApply: false
+---
+
+# Иконки проекта
+
+## Источник в Figma
+
+Все иконки проекта (включая свойства) хранятся на странице макета:
+
+**URL:** https://www.figma.com/design/XiuYe9sKxf2L1cQhk0EpKo/Design-System-Test?node-id=24-20981
+
+При добавлении или изменении иконок — брать название и свойства из этого макета.
+
+## Правила использования
+
+1. **Материал:** Material Icons Outlined (Quasar `material-icons-outlined`, префикс `o_`)
+2. **Именование:** Figma name → snake_case + префикс `o_` (пример: `task_alt` → `o_task_alt`)
+3. **Компонент:** `<q-icon :name="o_iconName" />`, без SVG
+4. **Размеры в sidebar:** пункты меню 24px, подпункты 12px (переменные в `variables.scss`)
+
+## Текущая конфигурация
+
+- `quasar.config.ts`: extras и iconSet `material-icons-outlined`
+- Размеры: `--sidebar-icon-size: 24px`, `--sidebar-subitem-icon-size: 12px`

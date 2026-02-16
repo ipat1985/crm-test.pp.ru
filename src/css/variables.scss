@@ -1,0 +1,325 @@
+// =============================================================================
+// Design Tokens — Figma Variables
+// =============================================================================
+// Значения из Figma Variables API. Имена соответствуют токенам в макете.
+// Синхронизация: Color/Text/color-text-primary, primary-main, action-selected и др.
+// Управление цветами только через этот файл.
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Typography — макет 0-1
+  // ---------------------------------------------------------------------------
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Typography/FA — стили с префиксом Typography/FA используют Montserrat */
+  --font-family-fa: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Typography/FA/text-h5 — для PageHeaderTitle (макет 18-645) */
+  --typography-text-h5-font-size: 24px;
+  --typography-text-h5-font-weight: 600; /* Semibold */
+  --typography-text-h5-line-height: 32px; /* 1.33 */
+  --typography-text-h5-font-family: var(--font-family-fa);
+
+  // ---------------------------------------------------------------------------
+  // Figma Variables — из Design System (node 5:192, 18:801, 30:52884)
+  // ---------------------------------------------------------------------------
+
+  /* Color/Text/color-text-primary — дефолт пунктов меню (Sidebar/MenuItem 30:52884) */
+  --color-text-primary: #483b72e5;
+
+  --color-text-secondary: #2f2b3db2;
+  --color-secondary-main: #808390;
+
+  --color-primary-main: #7367f0;
+
+  /* primary-o-light / primary-o-main — из Figma 30:52884 */
+  --color-primary-o-light: #7367f014;
+  --color-primary-o-main: #7367f029;
+
+  /* primary-opacity-lighter / primary-opacity-light — hover и action-selected */
+  --color-primary-opacity-lighter: #7367f00d;
+  --color-primary-opacity-light: #7367f014;
+
+  /* Фон активного пункта меню — светло-лавандовый по макету 18-602 */
+  --color-menu-item-active-bg: #f2edff;
+
+  /* color-menu-active-bg — градиент для шапки MenuOverlay (макет 146-2124) */
+  --color-menu-active-bg: linear-gradient(90deg, #8e82e3 0%, #6a5adf 100%);
+
+  /* action-selected — фон раскрытой группы */
+  --color-action-selected: #2f2b3d14;
+  --color-action-hover: #2f2b3d0f;
+
+  --color-divider: #2f2b3d1f;
+  --color-border-outline: #2f2b3d4d; /* обводка для отладки */
+
+  --color-bg-white: #ffffff;
+  --color-bg-surface: #ffffff;
+  --color-body-bg: #f8f7fa;
+
+  /* Отступы от краёв экрана */
+  --layout-screen-padding: 16px;
+  --layout-screen-padding-double: 32px; /* 16px * 2 */
+
+  // ---------------------------------------------------------------------------
+  // Layout/PageContainer — макет 18-587
+  // ---------------------------------------------------------------------------
+  --layout-page-container-padding: 24px;
+  --layout-page-container-bg: var(--color-body-bg);
+  --layout-page-container-border: 1px solid var(--color-border-outline); /* пока для отладки */
+
+  // ---------------------------------------------------------------------------
+  // PageHeader — макеты 18-627, 18-644, 18-645, 18-643
+  // ---------------------------------------------------------------------------
+  --page-header-gap: 12px;
+  --page-header-margin-bottom: 24px;
+  --page-header-breadcrumb-font-size: 14px;
+  --page-header-breadcrumb-line-height: 1.4;
+  --page-header-breadcrumb-color: var(--color-text-secondary);
+  --page-header-breadcrumb-separator: var(--color-text-secondary);
+  /* PageHeaderTitle использует Typography/FA/text-h5 */
+  --page-header-title-font-size: var(--typography-text-h5-font-size);
+  --page-header-title-font-weight: var(--typography-text-h5-font-weight);
+  --page-header-title-line-height: var(--typography-text-h5-line-height);
+  --page-header-title-color: var(--color-text-primary);
+  --page-header-actions-gap: 8px;
+  --page-header-search-border-radius: 12px;
+  --page-header-search-height: 40px;
+  --page-header-search-placeholder-color: var(--color-text-secondary);
+
+  // ---------------------------------------------------------------------------
+  // Order/EmptyState — макет 41-9114
+  // ---------------------------------------------------------------------------
+  --order-empty-message-font-size: 16px;
+  --order-empty-message-line-height: 1.5;
+  --order-empty-message-color: var(--color-text-secondary);
+  --order-empty-action-font-size: 16px;
+  --order-empty-action-line-height: 1.5;
+  --order-empty-action-color: var(--color-primary-main);
+  --order-empty-action-color-hover: var(--color-primary-dark);
+
+  // ---------------------------------------------------------------------------
+  // Task/EmptyState — макет 222-8438
+  // ---------------------------------------------------------------------------
+  --task-empty-message-font-size: 16px;
+  --task-empty-message-line-height: 1.5;
+  --task-empty-message-color: var(--color-text-secondary);
+  --task-empty-action-font-size: 16px;
+  --task-empty-action-line-height: 1.5;
+  --task-empty-action-color: var(--color-primary-main);
+  --task-empty-action-color-hover: var(--color-primary-dark);
+
+  --color-on-primary: #ffffff;
+
+  /* primary-dark / primary-light — Figma 8-8285, 8-7059 */
+  --color-primary-dark: #675dd8;
+  --color-primary-light: #8f85f3;
+
+  // ---------------------------------------------------------------------------
+  // Icon button — макет 8-8285
+  // ---------------------------------------------------------------------------
+  --icon-btn-size: 40px;
+  --icon-btn-icon-size: 24px;
+  --icon-btn-radius: 8px;
+
+  /* Состояния: default, hover, active, disabled */
+  --icon-btn-default-bg: transparent;
+  --icon-btn-default-color: var(--color-primary-main);
+
+  --icon-btn-default-outlined-bg: transparent;
+  --icon-btn-default-outlined-color: var(--color-primary-main);
+  --icon-btn-default-outlined-border: var(--color-primary-main);
+
+  --icon-btn-default-filled-bg: var(--color-primary-o-light);
+  --icon-btn-default-filled-color: var(--color-primary-main);
+
+  --icon-btn-hover-filled-bg: var(--color-primary-o-main);
+  --icon-btn-hover-filled-color: var(--color-primary-main);
+
+  --icon-btn-active-filled-bg: var(--color-primary-main);
+  --icon-btn-active-filled-color: var(--color-on-primary);
+
+  --icon-btn-disabled-color: var(--color-text-secondary);
+  --icon-btn-disabled-opacity: 0.5;
+
+  // ---------------------------------------------------------------------------
+  // Sidebar — семантика (ссылки на Figma токены)
+  // ---------------------------------------------------------------------------
+  --sidebar-bg: var(--color-bg-surface);
+  --sidebar-brand-bg: var(--color-body-bg);
+  --sidebar-brand-logo-bg: var(--color-primary-main);
+  --sidebar-brand-logo-text: var(--color-on-primary);
+  --sidebar-brand-title: var(--color-text-primary);
+  --sidebar-brand-slogan: var(--color-secondary-main);
+
+  /* Hover пунктов меню — primary-opacity-lighter */
+  --sidebar-menu-item-hover-bg: var(--color-primary-opacity-lighter);
+
+  /* Пункты меню: Color/Text/color-text-primary */
+  --sidebar-menu-item-text: var(--color-text-primary);
+  --sidebar-menu-item-icon: var(--color-text-primary);
+  --sidebar-menu-item-expand-icon: var(--color-text-primary);
+
+  /* Раскрытая группа (action-selected): primary-opacity-light */
+  --sidebar-menu-group-expanded-bg: var(--color-primary-opacity-light);
+  --sidebar-menu-group-expanded-text: var(--sidebar-menu-item-text);
+  --sidebar-menu-group-expanded-icon: var(--sidebar-menu-item-icon);
+
+  /* Выбранный пункт: светло-лавандовый фон, тёмный текст — макет 18-602 */
+  --sidebar-menu-item-active-bg: var(--color-menu-item-active-bg);
+  --sidebar-menu-item-active-text: var(--color-text-primary);
+  --sidebar-menu-item-active-icon: var(--color-text-primary);
+
+  /* Подпункты: цвет как у single item, активный — primary-main */
+  --sidebar-subitem-text: var(--sidebar-menu-item-text);
+  --sidebar-subitem-icon: var(--sidebar-menu-item-icon);
+  --sidebar-subitem-active-text: var(--color-primary-main);
+  --sidebar-subitem-active-icon: var(--color-primary-main);
+
+  --sidebar-footer-border: var(--color-divider);
+  --sidebar-footer-toggle: var(--color-secondary-main);
+  --sidebar-footer-link: var(--color-primary-main);
+
+  /* Иконки sidebar */
+  --sidebar-icon-size: 24px;
+  --sidebar-subitem-icon-size: 12px;
+
+  /* Sidebar menu: отступы и скругление по макету 18-599 */
+  --sidebar-menu-padding-x: 10px;
+  --sidebar-menu-item-radius: 8px;
+
+  /* Расстояние от иконки до названия (avatar min-width = icon + gap) */
+  --sidebar-menu-icon-gap: 12px;
+
+  /* Свёрнутый sidebar: одинаковые отступы вокруг иконок со всех сторон */
+  --sidebar-collapsed-icon-padding: 12px;
+
+  /* Ширина sidebar — для offset header */
+  --sidebar-width: 280px;
+  --sidebar-width-collapsed: 72px;
+
+  // ---------------------------------------------------------------------------
+  // Card — макет 8-678
+  // ---------------------------------------------------------------------------
+  --card-radius: 8px;
+  --card-padding: 16px;
+  --card-header-padding: 16px;
+  --card-header-gap: 12px;
+  --card-header-avatar-size: 40px;
+  --card-header-title-font-size: 14px;
+  --card-header-title-color: var(--color-text-primary);
+  --card-header-subtitle-font-size: 12px;
+  --card-header-subtitle-color: var(--color-text-secondary);
+  --card-media-placeholder-bg: #e0e0e0;
+  --card-content-title-font-size: 20px;
+  --card-content-title-color: var(--color-text-primary);
+  --card-content-body-font-size: 14px;
+  --card-content-body-color: var(--color-text-secondary);
+  --card-actions-gap: 8px;
+
+  // ---------------------------------------------------------------------------
+  // Avatar — макет 8-1451
+  // ---------------------------------------------------------------------------
+  --avatar-size-xs: 24px;
+  --avatar-size-sm: 32px;
+  --avatar-size-md: 40px;
+  --avatar-size-lg: 48px;
+  --avatar-size-xl: 56px;
+  --avatar-bg: var(--color-primary-main);
+  --avatar-text-color: var(--color-on-primary);
+  --avatar-radius-full: 50%;
+  --avatar-radius-default: 8px;
+  --avatar-radius-none: 0;
+
+  // ---------------------------------------------------------------------------
+  // Button — макет 8-7059
+  // ---------------------------------------------------------------------------
+  --btn-padding-x: 16px;
+  --btn-padding-y: 8px;
+  --btn-font-size: 14px;
+  --btn-radius: 8px;
+  --btn-radius-rounded: 9999px;
+  --btn-filled-bg: var(--color-primary-main);
+  --btn-filled-color: var(--color-on-primary);
+  --btn-filled-hover-bg: var(--color-primary-light);
+  --btn-outline-border: var(--color-primary-main);
+  --btn-outline-color: var(--color-primary-main);
+  --btn-outline-hover-bg: var(--color-primary-o-light);
+  --btn-flat-color: var(--color-primary-main);
+  --btn-flat-hover-bg: var(--color-primary-o-light);
+  --btn-disabled-bg: var(--color-action-selected);
+  --btn-disabled-color: var(--color-text-secondary);
+
+  // ---------------------------------------------------------------------------
+  // Button Group — макет 8-6529
+  // ---------------------------------------------------------------------------
+  --btn-group-gap: 4px;
+
+  // ---------------------------------------------------------------------------
+  // Layout/Header — макет 17-8795
+  // ---------------------------------------------------------------------------
+  --layout-header-bg: var(--color-bg-surface);
+  --layout-header-height: 72px; /* как SidebarBrand */
+  --layout-header-menu-gap: 8px;
+  --layout-header-title-font-size: 18px;
+  --layout-header-title-color: var(--color-text-primary);
+  --layout-header-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1),
+    0 2px 2.5px rgba(0, 0, 0, 0.07),
+    0 0.5px 5px rgba(0, 0, 0, 0.06); /* тень в 2 раза мягче */
+
+  // ---------------------------------------------------------------------------
+  // Header/left area — макет 17-8719
+  // ---------------------------------------------------------------------------
+  --header-left-gap: 32px;
+  --header-left-recharge-bg: var(--color-bg-white);
+  --header-left-balance-font-size: 14px;
+  --header-left-balance-line-height: 1.4;
+  --header-left-balance-label-color: var(--color-text-primary);
+  --header-left-balance-value-color: var(--color-primary-main);
+
+  // ---------------------------------------------------------------------------
+  // Header/right area — макет 17-8733
+  // ---------------------------------------------------------------------------
+  --header-right-gap: 12px;
+  --header-right-title-color: var(--color-primary-main);
+  --header-right-title-font-size: 14px;
+  --header-right-subtitle-color: var(--color-text-secondary);
+  --header-right-subtitle-font-size: 12px;
+
+  // ---------------------------------------------------------------------------
+  // TextField / Input — макет 23-9159
+  // ---------------------------------------------------------------------------
+  --input-height: 40px;
+  --input-padding-x: 12px;
+  --input-border-radius: 8px;
+  --input-border-width: 1px;
+  --input-bg: var(--color-bg-white);
+  --input-border-color: var(--color-border-outline);
+  --input-border-color-focus: var(--color-primary-main);
+  --input-border-color-error: #ea5455;
+  --input-text-color: var(--color-text-primary);
+  --input-placeholder-color: var(--color-text-secondary);
+  --input-label-font-size: 14px;
+  --input-label-color: var(--color-text-primary);
+  --input-label-color-focus: var(--color-primary-main);
+  --input-label-color-error: var(--input-border-color-error);
+  --input-helper-font-size: 12px;
+  --input-helper-color: var(--color-text-secondary);
+  --input-helper-color-error: var(--input-border-color-error);
+  --input-disabled-bg: var(--color-action-selected);
+  --input-disabled-color: var(--color-text-secondary);
+  --input-disabled-opacity: 0.7;
+  --input-icon-color: var(--color-text-secondary);
+  --input-icon-size: 20px;
+
+  /* Sidebar/MenuOverlay — макет 146-2124 */
+  --sidebar-menu-overlay-radius: 10px;
+  --sidebar-menu-overlay-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --sidebar-menu-overlay-min-width: 220px;
+  --sidebar-menu-overlay-header-bg: var(--color-menu-active-bg);
+  --sidebar-menu-overlay-header-text: var(--color-on-primary);
+  --sidebar-menu-overlay-header-padding: 12px 16px;
+  --sidebar-menu-overlay-list-bg: var(--color-bg-white);
+  --sidebar-menu-overlay-list-padding: 4px;
+}

@@ -1,1 +1,74 @@
 // app global css in SCSS form
+
+// Фон всей страницы и отступы от краёв экрана
+body {
+  font-family: var(--font-family-primary);
+  background: var(--color-body-bg);
+  padding: var(--layout-screen-padding);
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+#q-app {
+  min-height: 100%;
+}
+
+// Правая колонка (header + page): полная высота экрана, при ресайзе меняется только область контента
+// Как у Sidebar: фиксированная высота, скролл только внутри области контента
+.q-layout {
+  height: calc(100vh - var(--layout-screen-padding-double)) !important;
+  min-height: 0 !important; /* override Quasar inline min-height */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// Header: тень в 2 раза мягче
+.layout-header.q-header .q-layout__shadow::after {
+  box-shadow: var(--layout-header-shadow) !important;
+}
+
+// Header: позиция и ширина относительно sidebar (override Quasar)
+// При mini-to-overlay + развёрнутый drawer Quasar может не давать left offset
+@media (min-width: 1024px) {
+  .layout-header.q-header {
+    left: var(--sidebar-width) !important;
+    right: 0 !important;
+    width: auto !important;
+    max-width: calc(100vw - var(--sidebar-width)) !important;
+    margin-left: 0 !important;
+
+    &.layout-header--sidebar-collapsed {
+      left: var(--sidebar-width-collapsed) !important;
+      max-width: calc(100vw - var(--sidebar-width-collapsed)) !important;
+    }
+  }
+}
+
+// PageContainer: занимает оставшуюся высоту (под header), без скролла (скролл только внутри PageContent)
+.layout-page-content.q-page-container {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden; /* без скролла на уровне контейнера */
+  padding-bottom: var(--layout-screen-padding) !important;
+}
+
+@media (min-width: 1024px) {
+  .layout-page-content.q-page-container {
+    padding-left: var(--sidebar-width) !important;
+
+    &.layout-page-content--sidebar-collapsed {
+      padding-left: var(--sidebar-width-collapsed) !important;
+    }
+  }
+}
+
+// Цвет контента кнопок (icon-button) — primary-main
+.icon-button .q-btn__content {
+  color: var(--color-primary-main) !important;
+}
+
+// Скрыть пока иконку-кнопку (icon-button icon variant, square)
+.header-left-area .icon-button--icon.icon-button--square {
+  display: none;
+}
