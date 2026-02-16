@@ -42,6 +42,7 @@ withDefaults(
   font-size: var(--page-header-breadcrumb-font-size);
   line-height: var(--page-header-breadcrumb-line-height);
   color: var(--page-header-breadcrumb-color);
+  min-height: 20px; /* минимальная высота для видимости */
 }
 
 .page-header-breadcrumb__separator {

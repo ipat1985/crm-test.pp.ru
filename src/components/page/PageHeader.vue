@@ -28,9 +28,11 @@ defineOptions({ name: 'PageHeader' });
 }
 
 .page-header__breadcrumb {
+  display: block; /* убеждаемся, что элемент виден */
   font-size: var(--page-header-breadcrumb-font-size);
   line-height: var(--page-header-breadcrumb-line-height);
   color: var(--page-header-breadcrumb-color);
+  opacity: 1; /* убеждаемся, что не прозрачный */
 }
 
 .page-header__row {

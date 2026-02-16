@@ -15,7 +15,7 @@ defineOptions({ name: 'LayoutPageContainer' });
   width: 100%;
   flex: 1 1 0;
   min-height: 0;
-  padding: var(--layout-page-container-padding);
+  padding: 32px var(--layout-page-container-padding) var(--layout-page-container-padding);
   background: var(--layout-page-container-bg);
   box-sizing: border-box;
 }

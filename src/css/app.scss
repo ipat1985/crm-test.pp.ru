@@ -46,10 +46,12 @@ body {
 }
 
 // PageContainer: занимает оставшуюся высоту (под header), без скролла (скролл только внутри PageContent)
+// Quasar автоматически добавляет padding-top для фиксированного header, но мы переопределяем его
 .layout-page-content.q-page-container {
   flex: 1 1 0;
   min-height: 0;
   overflow: hidden; /* без скролла на уровне контейнера */
+  padding-top: var(--layout-header-height) !important; /* высота header */
   padding-bottom: var(--layout-screen-padding) !important;
 }
 
