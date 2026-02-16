@@ -1,0 +1,37 @@
+name: Auto Deploy Quasar Dev
+
+on:
+  push:
+    branches:
+      - main  # триггер на ветку main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Quasar CLI
+      run: npm install -g @quasar/cli
+
+    - name: Build Quasar
+      run: quasar build -m spa
+
+    - name: Create zip of build
+      run: zip -r dist/spa.zip dist/spa
+
+    - name: Send build to webhook
+      run: |
+        curl -X POST https://crm-test.pp.ru/hooks/ \
+          -F "file=@dist/spa.zip"
+
