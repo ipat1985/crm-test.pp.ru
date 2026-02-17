@@ -100,6 +100,17 @@
   --order-empty-action-color-hover: var(--color-primary-dark);
 
   // ---------------------------------------------------------------------------
+  // Index/StartContent — макет 246-2205
+  // ---------------------------------------------------------------------------
+  --index-start-message-font-size: 16px;
+  --index-start-message-line-height: 1.5;
+  --index-start-message-color: var(--color-text-secondary);
+  --index-start-action-font-size: 16px;
+  --index-start-action-line-height: 1.5;
+  --index-start-action-color: var(--color-primary-main);
+  --index-start-action-color-hover: var(--color-primary-dark);
+
+  // ---------------------------------------------------------------------------
   // Task/EmptyState — макет 222-8438
   // ---------------------------------------------------------------------------
   --task-empty-message-font-size: 16px;

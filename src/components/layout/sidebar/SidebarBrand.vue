@@ -1,9 +1,14 @@
 <template>
-  <div class="sidebar-brand" :class="{ 'sidebar-brand--collapsed': collapsed }">
+  <router-link
+    to="/"
+    class="sidebar-brand"
+    :class="{ 'sidebar-brand--collapsed': collapsed }"
+    aria-label="На главную"
+  >
     <div class="sidebar-brand__logo">
       <span class="sidebar-brand__logo-text">PP</span>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script setup lang="ts">
@@ -23,6 +28,8 @@ defineProps<{
   box-sizing: border-box;
   background: var(--sidebar-bg);
   flex-shrink: 0;
+  text-decoration: none;
+  color: inherit;
 
   &__logo {
     width: 40px;
