@@ -3,45 +3,35 @@ name: Auto Deploy Quasar Dev
 on:
   push:
     branches:
-      - main  # триггер на ветку main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1️⃣ Получаем код с GitHub
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # 2️⃣ Устанавливаем Node.js
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 20
 
-    # 3️⃣ Устанавливаем зависимости
     - name: Install dependencies
       run: npm ci
 
-    # 4️⃣ Устанавливаем Quasar CLI
-    - name: Install Quasar CLI
-      run: npm install -g @quasar/cli
+    - name: Build Quasar SPA
+      run: npx quasar build -m spa
 
-    # 5️⃣ Собираем проект Quasar SPA
-    - name: Build Quasar
-      run: quasar build -m spa
-
-    # 6️⃣ Проверяем содержимое dist для отладки (опционально)
     - name: Check dist folder
       run: ls -lhR dist
 
-    # 7️⃣ Создаём zip сборки
     - name: Create zip of build
       run: |
-        zip -r dist/spa.zip dist/spa
+        cd dist
+        zip -r spa.zip spa/*
 
-    # 8️⃣ Отправляем сборку на сервер webhook
     - name: Send build to webhook
       run: |
         curl -k -X POST https://crm-test.pp.ru/hooks/ \
