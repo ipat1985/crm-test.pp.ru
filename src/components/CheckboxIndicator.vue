@@ -85,7 +85,7 @@ withDefaults(
   }
 
   &--hover {
-    background: var(--checkbox-indicator-hover-ring);
+    background: var(--checkbox-indicator-hover-bg-unchecked);
   }
 
   &--disabled {
@@ -108,6 +108,19 @@ withDefaults(
 .checkbox-indicator--checked .checkbox-indicator__box {
   background: var(--checkbox-indicator-fill);
   border-color: var(--checkbox-indicator-fill);
+}
+
+.checkbox-indicator--checked.checkbox-indicator--hover {
+  background: var(--checkbox-indicator-hover-ring);
+}
+
+/* Interactive hover for real UI usage (md, dense off included) */
+.checkbox-indicator:not(.checkbox-indicator--disabled):hover {
+  background: var(--checkbox-indicator-hover-bg-unchecked);
+}
+
+.checkbox-indicator--checked:not(.checkbox-indicator--disabled):hover {
+  background: var(--checkbox-indicator-hover-ring);
 }
 
 .checkbox-indicator__icon {

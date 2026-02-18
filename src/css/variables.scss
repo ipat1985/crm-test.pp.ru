@@ -40,6 +40,8 @@
   /* primary-opacity-lighter / primary-opacity-light — hover и action-selected */
   --color-primary-opacity-lighter: #7367f00d;
   --color-primary-opacity-light: #7367f014;
+  --color-primary-opacity-dark: #7367f03d;
+  --color-secondary-opacity-main: #8083903d;
 
   /* Фон активного пункта меню — светло-лавандовый по макету 18-602 */
   --color-menu-item-active-bg: #f2edff;
@@ -391,11 +393,12 @@
 
   --checkbox-indicator-ring-radius: 999px;
   --checkbox-indicator-radius: 2px;
-  --checkbox-indicator-border-width: 1.5px;
-  --checkbox-indicator-border-color: var(--color-border-outline);
+  --checkbox-indicator-border-width: 1px;
+  --checkbox-indicator-border-color: var(--color-secondary-opacity-main);
   --checkbox-indicator-fill: var(--color-primary-main);
   --checkbox-indicator-icon-color: var(--color-on-primary);
   --checkbox-indicator-hover-ring: var(--color-primary-o-main);
+  --checkbox-indicator-hover-bg-unchecked: var(--color-action-hover);
 
   --checkbox-indicator-size-xs: 10px;
   --checkbox-indicator-size-sm: 12px;
