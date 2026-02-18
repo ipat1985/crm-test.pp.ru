@@ -38,9 +38,7 @@
         </template>
       </PageHeader>
 
-      <TaskPageContent>
-        <TaskEmptyState @action-click="onCreateTask" />
-      </TaskPageContent>
+      <PageContent page="task" state="empty" @action-click="onCreateTask" />
     </PageContainer>
   </q-page>
 </template>
@@ -53,8 +51,7 @@ import PageHeaderActions from 'components/page/PageHeaderActions.vue';
 import PageHeaderBreadcrumb from 'components/page/PageHeaderBreadcrumb.vue';
 import PageHeaderSearch from 'components/page/PageHeaderSearch.vue';
 import PageHeaderTitle from 'components/page/PageHeaderTitle.vue';
-import TaskPageContent from 'components/page/task/TaskPageContent.vue';
-import TaskEmptyState from 'components/page/task/TaskEmptyState.vue';
+import PageContent from 'components/page/PageContent.vue';
 import IconButton from 'components/IconButton.vue';
 
 defineOptions({ name: 'TasksPage' });

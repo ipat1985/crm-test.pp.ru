@@ -1,16 +1,34 @@
-#!/bin/bash
+const { exec } = require("child_process");
 
-# Путь к проекту
-PROJECT_DIR="/home/user/crm-test.pp.ru"
+const commands = [
+  "git pull origin main",
+  "npm install",
+  "npx quasar build",
+  "npx serve -s dist/spa -l " + (process.env.PORT || 8081)
+];
 
-cd $PROJECT_DIR || exit 1
+function runCommand(cmd, cb) {
+  const proc = exec(cmd, (err, stdout, stderr) => {
+    if (err) {
+      console.error(`Error executing: ${cmd}\n`, err);
+      return cb(err);
+    }
+    console.log(stdout);
+    console.error(stderr);
+    cb();
+  });
 
-# Сбрасываем локальные изменения и подтягиваем новые из git
-git reset --hard
-git pull origin main
+  proc.stdout.pipe(process.stdout);
+  proc.stderr.pipe(process.stderr);
+}
 
-# Останавливаем старый dev-сервер (если есть)
-pm2 stop quasar-dev 2>/dev/null
+function runAll(commands) {
+  if (commands.length === 0) return;
+  const cmd = commands.shift();
+  runCommand(cmd, (err) => {
+    if (err) return;
+    runAll(commands);
+  });
+}
 
-# Запускаем Quasar dev на порту 8080 через pm2
-pm2 start "quasar dev -m spa -p 8080" --name quasar-dev --cwd $PROJECT_DIR
+runAll(commands);

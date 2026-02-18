@@ -324,6 +324,90 @@
   --input-icon-color: var(--color-text-secondary);
   --input-icon-size: 20px;
 
+  // ---------------------------------------------------------------------------
+  // SelectField — макет 272-14169
+  // ---------------------------------------------------------------------------
+  --select-height: 56px;
+  --select-padding-x: 12px;
+  --select-border-radius: 4px;
+  --select-border-width: 1px;
+  --select-bg: transparent;
+  --select-border-color: #666666;
+  --select-border-color-focus: var(--color-primary-main);
+  --select-border-color-error: #ea5455;
+  --select-text-color: #212121;
+  --select-placeholder-color: #666666;
+  --select-label-font-size: 16px;
+  --select-label-color: #666666;
+  --select-label-color-error: var(--select-border-color-error);
+  --select-helper-font-size: 12px;
+  --select-helper-color: #666666;
+  --select-helper-color-error: var(--select-border-color-error);
+  --select-disabled-opacity: 0.7;
+  --select-icon-color: #666666;
+  --select-icon-size: 20px;
+  --select-menu-border: #e0e0e0;
+  --select-menu-radius: 4px;
+  --select-option-height: 48px;
+  --select-option-text-color: #474747;
+
+  // ---------------------------------------------------------------------------
+  // TableItem — макет 299-26035
+  // ---------------------------------------------------------------------------
+  --table-item-height: 48px;
+  --table-item-height-dense: 30px;
+  --table-item-padding-x: 16px;
+  --table-item-border-color: var(--color-border-outline);
+  --table-item-hover-bg: rgba(0, 0, 0, 0.05);
+  --table-item-text-color: #000000;
+  --table-item-font-size-cell: 13px;
+  --table-item-font-size-header: 12px;
+  --table-item-font-weight-cell: 400;
+  --table-item-font-weight-header: 500;
+  --table-item-gap: 4px;
+  --table-item-slot-width: 80px;
+  --table-item-slot-height: 40px;
+  --table-item-slot-bg: #fafafa;
+  --table-item-slot-icon-bg: #ffffff;
+  --table-item-slot-icon-border: #cfd8dc;
+
+  // ---------------------------------------------------------------------------
+  // Checkbox / CheckboxIndicator — макеты 318-18360, 318-18194
+  // ---------------------------------------------------------------------------
+  --checkbox-hover-bg: var(--color-primary-o-light);
+  --checkbox-disabled-opacity: 0.6;
+  --checkbox-gap: 16px;
+  --checkbox-gap-dense: 4px;
+  --checkbox-padding-x: 16px;
+  --checkbox-padding-y: 8px;
+  --checkbox-padding-x-dense: 4px;
+  --checkbox-padding-y-dense: 2px;
+  --checkbox-label-font-size: 14px;
+  --checkbox-label-line-height: 20px;
+  --checkbox-label-color: var(--color-text-primary);
+  --checkbox-description-font-size: 12px;
+  --checkbox-description-line-height: 16px;
+  --checkbox-description-color: var(--color-text-secondary);
+
+  --checkbox-indicator-ring-radius: 999px;
+  --checkbox-indicator-radius: 2px;
+  --checkbox-indicator-border-width: 1.5px;
+  --checkbox-indicator-border-color: var(--color-border-outline);
+  --checkbox-indicator-fill: var(--color-primary-main);
+  --checkbox-indicator-icon-color: var(--color-on-primary);
+  --checkbox-indicator-hover-ring: var(--color-primary-o-main);
+
+  --checkbox-indicator-size-xs: 10px;
+  --checkbox-indicator-size-sm: 12px;
+  --checkbox-indicator-size-md: 20px;
+  --checkbox-indicator-size-lg: 24px;
+  --checkbox-indicator-size-xl: 30px;
+  --checkbox-indicator-hit-xs: 20px;
+  --checkbox-indicator-hit-sm: 24px;
+  --checkbox-indicator-hit-md: 40px;
+  --checkbox-indicator-hit-lg: 48px;
+  --checkbox-indicator-hit-xl: 60px;
+
   /* Sidebar/MenuOverlay — макет 146-2124 */
   --sidebar-menu-overlay-radius: 10px;
   --sidebar-menu-overlay-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);

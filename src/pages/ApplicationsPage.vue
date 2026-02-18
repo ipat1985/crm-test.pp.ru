@@ -6,13 +6,13 @@
           <PageHeaderBreadcrumb
             :items="[
               { label: 'Главная', to: '/' },
-              { label: 'Заявки на подбор' },
+              { label: 'Заявки' },
             ]"
             separator=" - "
           />
         </template>
         <template #title>
-          <PageHeaderTitle title="Заявки на подбор" />
+          <PageHeaderTitle title="Заявки" />
         </template>
         <template #actions>
           <PageHeaderActions
@@ -38,9 +38,7 @@
         </template>
       </PageHeader>
 
-      <OrderPageContent>
-        <OrderEmptyState @action-click="onCreateApplication" />
-      </OrderPageContent>
+      <PageContent page="order" state="filled" @action-click="onCreateApplication" />
     </PageContainer>
   </q-page>
 </template>
@@ -53,8 +51,7 @@ import PageHeaderActions from 'components/page/PageHeaderActions.vue';
 import PageHeaderBreadcrumb from 'components/page/PageHeaderBreadcrumb.vue';
 import PageHeaderSearch from 'components/page/PageHeaderSearch.vue';
 import PageHeaderTitle from 'components/page/PageHeaderTitle.vue';
-import OrderPageContent from 'components/page/order/OrderPageContent.vue';
-import OrderEmptyState from 'components/page/order/OrderEmptyState.vue';
+import PageContent from 'components/page/PageContent.vue';
 import IconButton from 'components/IconButton.vue';
 
 defineOptions({ name: 'ApplicationsPage' });

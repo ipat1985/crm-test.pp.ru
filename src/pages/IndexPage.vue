@@ -10,9 +10,7 @@
         </template>
       </PageHeader>
 
-      <IndexPageContent>
-        <IndexStartContent @action-click="onAddElement" />
-      </IndexPageContent>
+      <PageContent page="index" state="empty" @action-click="onAddElement" />
     </PageContainer>
   </q-page>
 </template>
@@ -21,9 +19,8 @@
 import PageContainer from 'components/layout/PageContainer.vue';
 import PageHeader from 'components/page/PageHeader.vue';
 import PageHeaderBreadcrumb from 'components/page/PageHeaderBreadcrumb.vue';
+import PageContent from 'components/page/PageContent.vue';
 import PageHeaderTitle from 'components/page/PageHeaderTitle.vue';
-import IndexPageContent from 'components/page/index/IndexPageContent.vue';
-import IndexStartContent from 'components/page/index/IndexStartContent.vue';
 
 defineOptions({ name: 'IndexPage' });
 
