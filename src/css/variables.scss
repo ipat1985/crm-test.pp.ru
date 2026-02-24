@@ -11,6 +11,7 @@
   // Typography — макет 0-1
   // ---------------------------------------------------------------------------
   --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-roboto: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   
   /* Typography/FA — стили с префиксом Typography/FA используют Montserrat */
   --font-family-fa: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -410,6 +411,55 @@
   --checkbox-indicator-hit-md: 40px;
   --checkbox-indicator-hit-lg: 48px;
   --checkbox-indicator-hit-xl: 60px;
+
+  // ---------------------------------------------------------------------------
+  // ToggleIndicator — макет 348-6104
+  // ---------------------------------------------------------------------------
+  --toggle-indicator-rail-bg-off: #2e263d3d;
+  --toggle-indicator-rail-bg-on: #7367f03d;
+  --toggle-indicator-thumb-bg-off: var(--color-bg-white);
+  --toggle-indicator-thumb-bg-on: var(--color-primary-main);
+  --toggle-indicator-hover-ring-bg: var(--color-primary-o-light);
+  --toggle-indicator-hover-ring-size: 125%;
+  --toggle-indicator-disabled-opacity: 0.75;
+  --toggle-indicator-thumb-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 2px 2px rgba(0, 0, 0, 0.14), 0 1px 5px rgba(0, 0, 0, 0.2);
+
+  --toggle-indicator-track-width-xs: 24px;
+  --toggle-indicator-track-width-sm: 28px;
+  --toggle-indicator-track-width-md: 32px;
+  --toggle-indicator-track-width-lg: 40px;
+  --toggle-indicator-track-width-xl: 48px;
+
+  --toggle-indicator-track-height-xs: 15px;
+  --toggle-indicator-track-height-sm: 17.5px;
+  --toggle-indicator-track-height-md: 20px;
+  --toggle-indicator-track-height-lg: 25px;
+  --toggle-indicator-track-height-xl: 30px;
+
+  --toggle-indicator-rail-height-xs: 11px;
+  --toggle-indicator-rail-height-sm: 12px;
+  --toggle-indicator-rail-height-md: 14px;
+  --toggle-indicator-rail-height-lg: 17.5px;
+  --toggle-indicator-rail-height-xl: 21px;
+
+  --toggle-indicator-thumb-size-xs: 15px;
+  --toggle-indicator-thumb-size-sm: 17.5px;
+  --toggle-indicator-thumb-size-md: 20px;
+  --toggle-indicator-thumb-size-lg: 25px;
+  --toggle-indicator-thumb-size-xl: 30px;
+
+  --toggle-indicator-hit-width-xs: 42px;
+  --toggle-indicator-hit-width-sm: 49px;
+  --toggle-indicator-hit-width-md: 56px;
+  --toggle-indicator-hit-width-lg: 70px;
+  --toggle-indicator-hit-width-xl: 84px;
+
+  --toggle-indicator-hit-height-xs: 30px;
+  --toggle-indicator-hit-height-sm: 35px;
+  --toggle-indicator-hit-height-md: 40px;
+  --toggle-indicator-hit-height-lg: 50px;
+  --toggle-indicator-hit-height-xl: 60px;
 
   /* Sidebar/MenuOverlay — макет 146-2124 */
   --sidebar-menu-overlay-radius: 10px;

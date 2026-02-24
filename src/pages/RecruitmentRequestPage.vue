@@ -1,24 +1,25 @@
 <template>
-  <q-page class="applications-page">
+  <q-page class="recruitment-request-page">
     <PageContainer>
       <PageHeader>
         <template #breadcrumb>
           <PageHeaderBreadcrumb
             :items="[
               { label: 'Главная', to: '/' },
-              { label: 'Заявки' },
+              { label: 'Рекрутинг' },
+              { label: 'Заявка на подбор' },
             ]"
             separator=" - "
           />
         </template>
         <template #title>
-          <PageHeaderTitle title="Заявки" />
+          <PageHeaderTitle title="Заявка на подбор" />
         </template>
         <template #actions>
           <PageHeaderActions
             primary-label="Добавить заявку"
             primary-icon="o_add"
-            @primary-click="onCreateApplication"
+            @primary-click="onCreateRequest"
           >
             <template #search>
               <PageHeaderSearch
@@ -39,10 +40,9 @@
       </PageHeader>
 
       <PageContent
-        page="order"
-        state="filled"
-        :search-query="searchQuery"
-        @action-click="onCreateApplication"
+        page="recruitment-request"
+        state="empty"
+        @action-click="onCreateRequest"
       />
     </PageContainer>
   </q-page>
@@ -50,6 +50,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import PageContainer from 'components/layout/PageContainer.vue';
 import PageHeader from 'components/page/PageHeader.vue';
 import PageHeaderActions from 'components/page/PageHeaderActions.vue';
@@ -59,17 +60,18 @@ import PageHeaderTitle from 'components/page/PageHeaderTitle.vue';
 import PageContent from 'components/page/PageContent.vue';
 import IconButton from 'components/IconButton.vue';
 
-defineOptions({ name: 'ApplicationsPage' });
+defineOptions({ name: 'RecruitmentRequestPage' });
 
+const router = useRouter();
 const searchQuery = ref('');
 
-function onCreateApplication() {
-  // TODO: открыть форму создания заявки
+function onCreateRequest() {
+  void router.push('/recruitment/request/create');
 }
 </script>
 
 <style scoped lang="scss">
-.applications-page {
+.recruitment-request-page {
   display: flex;
   flex-direction: column;
   height: 100%;

@@ -236,12 +236,14 @@ defineOptions({ name: 'PageContent' });
 
 const props = withDefaults(
   defineProps<{
-    page?: 'order' | 'task' | 'index';
+    page?: 'order' | 'task' | 'index' | 'recruitment-request';
     state?: 'empty' | 'filled';
+    searchQuery?: string;
   }>(),
   {
     page: 'order',
     state: 'empty',
+    searchQuery: '',
   },
 );
 
@@ -262,6 +264,10 @@ const emptyContentByPage = {
   index: {
     message: 'Это контент стартовой страницы',
     action: 'Добавить элемент',
+  },
+  'recruitment-request': {
+    message: 'Заявок на подбор пока нет.',
+    action: 'Создать заявку на подбор',
   },
 } as const;
 
@@ -411,8 +417,24 @@ function buildOptionsForKey(key: FilterKey, rows: OrderDemoRow[]): string[] {
   );
 }
 
+function normalizeSearchValue(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function rowMatchesHeaderSearch(row: OrderDemoRow): boolean {
+  const query = normalizeSearchValue(props.searchQuery);
+  if (!query) return true;
+
+  return (
+    row.client.toLowerCase().includes(query) ||
+    row.city.toLowerCase().includes(query) ||
+    row.object.toLowerCase().includes(query)
+  );
+}
+
 function rowsMatchingOtherFilters(key: FilterKey): OrderDemoRow[] {
   return orderDemoRows.filter((row) =>
+    rowMatchesHeaderSearch(row) &&
     filterDefs.every((filter) => {
       if (filter.key === key) return true;
       const selected = selectedFilters.value[filter.key];
@@ -439,6 +461,7 @@ const filterOptions = computed<Record<FilterKey, string[]>>(() => {
 
 const filteredOrderRows = computed(() =>
   orderDemoRows.filter((row) =>
+    rowMatchesHeaderSearch(row) &&
     filterDefs.every((filter) => {
       const selected = selectedFilters.value[filter.key];
       if (selected.length === 0) return true;
