@@ -24,31 +24,28 @@ jobs:
     - name: Build Quasar SPA
       run: npx quasar build -m spa
 
-    - name: Check dist folder
-      run: ls -lhR dist
-
     - name: Create zip of build
       run: |
         cd dist
         zip -r spa.zip spa/*
 
-    - name: Setup SSH key
-      run: |
-        mkdir -p ~/.ssh
-        cat > ~/.ssh/deploy_key << 'KEYEOF'
-${{ secrets.DEPLOY_SSH_KEY }}
-KEYEOF
-        chmod 600 ~/.ssh/deploy_key
-        ssh-keyscan -H 85.198.67.95 >> ~/.ssh/known_hosts 2>/dev/null
-
-    - name: Copy build to server
-      run: |
-        scp -i ~/.ssh/deploy_key dist/spa.zip root@85.198.67.95:/tmp/spa.zip
+    - name: Deploy via SSH
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: 85.198.67.95
+        username: root
+        key: ${{ secrets.DEPLOY_SSH_KEY }}
+        source: dist/spa.zip
+        target: /tmp
+        strip_components: 1
 
     - name: Extract build on server
-      run: |
-        ssh -i ~/.ssh/deploy_key root@85.198.67.95 '
-          rm -rf /var/www/crm/dist/spa/* &&
-          unzip -o /tmp/spa.zip -d /var/www/crm/dist/ &&
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: 85.198.67.95
+        username: root
+        key: ${{ secrets.DEPLOY_SSH_KEY }}
+        script: |
+          rm -rf /var/www/crm/dist/spa/*
+          unzip -o /tmp/spa.zip -d /var/www/crm/dist/
           rm -f /tmp/spa.zip
-        '
