@@ -236,7 +236,7 @@ defineOptions({ name: 'PageContent' });
 
 const props = withDefaults(
   defineProps<{
-    page?: 'order' | 'task' | 'index' | 'recruitment-request';
+    page?: 'order' | 'task' | 'index' | 'recruitment-request' | 'physics';
     state?: 'empty' | 'filled';
     searchQuery?: string;
   }>(),
@@ -268,6 +268,10 @@ const emptyContentByPage = {
   'recruitment-request': {
     message: 'Заявок на подбор пока нет.',
     action: 'Создать заявку на подбор',
+  },
+  physics: {
+    message: 'Раздел пока пуст.',
+    action: 'Добавить',
   },
 } as const;
 

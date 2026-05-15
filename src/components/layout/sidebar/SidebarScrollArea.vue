@@ -135,6 +135,7 @@ const activeRoute = computed(() => route.path);
 const menuOrder: MenuEntry[] = [
   { type: 'single', key: 'tasks', title: 'Задания', icon: 'o_task_alt', to: '/tasks' },
   { type: 'single', key: 'applications', title: 'Заявки', icon: 'o_list_alt', to: '/applications' },
+  { type: 'single', key: 'physics', title: 'Физики', icon: 'o_science', to: '/physics' },
   {
     type: 'group',
     key: 'shifts',
