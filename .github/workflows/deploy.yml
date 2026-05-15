@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: 20
 
@@ -24,28 +24,24 @@ jobs:
     - name: Build Quasar SPA
       run: npx quasar build -m spa
 
-    - name: Create zip of build
+    - name: Setup SSH agent
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+    - name: Add host to known_hosts
+      run: ssh-keyscan -H 85.198.67.95 >> ~/.ssh/known_hosts
+
+    - name: Create zip and copy to server
       run: |
         cd dist
         zip -r spa.zip spa/*
-
-    - name: Deploy via SSH
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: 85.198.67.95
-        username: root
-        key: ${{ secrets.DEPLOY_SSH_KEY }}
-        source: dist/spa.zip
-        target: /tmp
-        strip_components: 1
+        scp spa.zip root@85.198.67.95:/tmp/
 
     - name: Extract build on server
-      uses: appleboy/ssh-action@v1.2.0
-      with:
-        host: 85.198.67.95
-        username: root
-        key: ${{ secrets.DEPLOY_SSH_KEY }}
-        script: |
-          rm -rf /var/www/crm/dist/spa/*
-          unzip -o /tmp/spa.zip -d /var/www/crm/dist/
+      run: |
+        ssh root@85.198.67.95 '
+          rm -rf /var/www/crm/dist/spa/* &&
+          unzip -o /tmp/spa.zip -d /var/www/crm/dist/ &&
           rm -f /tmp/spa.zip
+        '
