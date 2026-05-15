@@ -32,7 +32,23 @@ jobs:
         cd dist
         zip -r spa.zip spa/*
 
-    - name: Send build to webhook
+    - name: Copy build to server via SCP
+      env:
+        SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
       run: |
-        curl -k -X POST https://crm-test.pp.ru/hooks/ \
-          -F "file=@dist/spa.zip"
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        ssh-keyscan -H 85.198.67.95 >> ~/.ssh/known_hosts
+        scp -i ~/.ssh/deploy_key dist/spa.zip root@85.198.67.95:/tmp/
+
+    - name: Extract build on server
+      env:
+        SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+      run: |
+        ssh -i ~/.ssh/deploy_key root@85.198.67.95 "
+          rm -rf /var/www/crm/dist/spa/* &&
+          unzip -o /tmp/spa.zip -d /var/www/crm/dist/ &&
+          rm /tmp/spa.zip &&
+          echo 'Deploy complete'
+        "
