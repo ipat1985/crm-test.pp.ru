@@ -24,23 +24,18 @@ jobs:
     - name: Build Quasar SPA
       run: npx quasar build -m spa
 
-    - name: Setup SSH agent
-      uses: webfactory/ssh-agent@v0.9.0
-      with:
-        ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
-
-    - name: Add host to known_hosts
-      run: ssh-keyscan -H 85.198.67.95 >> ~/.ssh/known_hosts
-
-    - name: Create zip and copy to server
+    - name: Create zip of build
       run: |
         cd dist
         zip -r spa.zip spa/*
-        scp spa.zip root@85.198.67.95:/tmp/
 
-    - name: Extract build on server
+    - name: Deploy to server
+      env:
+        SSH_PASS: ${{ secrets.DEPLOY_SSH_PASS }}
       run: |
-        ssh root@85.198.67.95 '
+        apt-get update -qq && apt-get install -y -qq sshpass
+        sshpass -p "$SSH_PASS" scp -o StrictHostKeyChecking=accept-new dist/spa.zip root@85.198.67.95:/tmp/
+        sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=accept-new root@85.198.67.95 '
           rm -rf /var/www/crm/dist/spa/* &&
           unzip -o /tmp/spa.zip -d /var/www/crm/dist/ &&
           rm -f /tmp/spa.zip
